@@ -1,0 +1,59 @@
+[build]
+#target = "thumbv6m-none-eabi"
+#target = "thumbv7em-none-eabi"
+#target = "thumbv7em-none-eabihf"
+#target = "thumbv7m-none-eabi"
+#target = "thumbv8m.base-none-eabi"
+#target = "thumbv8m.main-none-eabi"
+#target = "thumbv8m.main-none-eabihf"
+#target = "riscv32i-unknown-none-elf"
+#target = "riscv32imac-unknown-none-elf"
+#target = "riscv32imc-unknown-none-elf"
+#target = "riscv64gc-unknown-none-elf"
+#target = "riscv64imac-unknown-none-elf"
+
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+rustflags = [
+    "-C", "link-arg=-Tlink.x"
+]
+
+[target.'cfg(all(any(target_arch = "riscv32", target_arch = "riscv64"), target_os = "none"))']
+rustflags = [
+    "-C", "link-arg=-Triscv-link.x"
+]
+
+[target.thumbv6m-none-eabi]
+runner = "qemu-system-arm -machine lm3s6965evb -cpu cortex-m0 -m 32K -semihosting -display none -kernel"
+
+[target.thumbv7m-none-eabi]
+runner = "qemu-system-arm -machine lm3s6965evb -cpu cortex-m3 -m 32K -semihosting -display none -kernel"
+
+[target.thumbv7em-none-eabi]
+runner = "qemu-system-arm -machine lm3s6965evb -cpu cortex-m4 -m 32K -semihosting -display none -kernel"
+
+[target.thumbv7em-none-eabihf]
+runner = "qemu-system-arm -machine lm3s6965evb -cpu cortex-m4 -m 32K -semihosting -display none -kernel"
+
+[target.thumbv8m.base-none-eabi]
+runner = "qemu-system-arm -machine lm3s6965evb -cpu cortex-m33 -m 32K -semihosting -display none -kernel"
+
+[target.thumbv8m.main-none-eabi]
+runner = "qemu-system-arm -machine lm3s6965evb -cpu cortex-m33 -m 32K -semihosting -display none -kernel"
+
+[target.thumbv8m.main-none-eabihf]
+runner = "qemu-system-arm -machine lm3s6965evb -cpu cortex-m33 -m 32K -semihosting -display none -kernel"
+
+[target.riscv32i-unknown-none-elf]
+runner = "qemu-system-riscv32 -machine virt -cpu rv32 -smp 1 -m 32K -serial stdio -bios none -display none -kernel"
+
+[target.riscv32imac-unknown-none-elf]
+runner = "qemu-system-riscv32 -machine virt -cpu rv32 -smp 1 -m 32K -serial stdio -bios none -display none -kernel"
+
+[target.riscv32imc-unknown-none-elf]
+runner = "qemu-system-riscv32 -machine virt -cpu rv32 -smp 1 -m 32K -serial stdio -bios none -display none -kernel"
+
+[target.riscv64gc-unknown-none-elf]
+runner = "qemu-system-riscv64 -machine virt -cpu rv64 -smp 1 -m 32K -serial stdio -bios none -display none -kernel"
+
+[target.riscv64imac-unknown-none-elf]
+runner = "qemu-system-riscv64 -machine virt -cpu rv64 -smp 1 -m 32K -serial stdio -bios none -display none -kernel"

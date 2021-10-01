@@ -1,0 +1,44 @@
+[package]
+name = "rt"
+version = "0.1.0"
+authors = ["Kevin Nause <kevin@nause.engineering>"]
+edition = "2018"
+license = "MIT"
+license-file = "LICENSE.txt"
+build = "build.rs"
+
+[lib]
+name = "rt"
+
+[features]
+default = ["halt"]
+abort = ["panic-abort"]
+halt = ["panic-halt"]
+
+[dependencies]
+panic-abort = { version = "0.3.2", optional = true } # Requires nightly
+panic-halt = { version = "0.2.0", optional = true }
+
+[target.'cfg(all(target_arch = "arm", target_os = "none"))'.dependencies]
+cortex-m = "0.7.3"
+cortex-m-rt = "0.7.0"
+cortex-m-semihosting = "0.*"
+
+[target.'cfg(all(any(target_arch = "riscv32", target_arch = "riscv64"), target_os = "none"))'.dependencies]
+riscv = "0.7.0"
+riscv-rt = "0.8.0"
+
+[profile.release]
+codegen-units = 1 # Better optimizations
+debug = false # Symbols don't increase size if enabled
+lto = true # Link time optimizations
+opt-level = "z" # Optimize for size
+
+[patch.crates-io]
+panic-abort = { git = "https://github.com/japaric/panic-abort.git", branch = "master" }
+panic-halt = { git = "https://github.com/korken89/panic-halt.git", branch = "master" }
+cortex-m = { git = "https://github.com/rust-embedded/cortex-m.git", branch = "master" }
+cortex-m-rt = { git = "https://github.com/rust-embedded/cortex-m-rt.git", branch = "master" }
+cortex-m-semihosting = { git = "https://github.com/rust-embedded/cortex-m.git", branch = "master" }
+riscv = { git = "https://github.com/rust-embedded/riscv.git", branch = "master" }
+riscv-rt = { git = "https://github.com/rust-embedded/riscv-rt.git", branch = "master" }

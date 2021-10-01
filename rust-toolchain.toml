@@ -1,0 +1,16 @@
+[toolchain]
+channel = "stable"
+targets = [
+    "thumbv6m-none-eabi",
+    "thumbv7em-none-eabi",
+    "thumbv7em-none-eabihf",
+    "thumbv7m-none-eabi",
+    "thumbv8m.base-none-eabi",
+    "thumbv8m.main-none-eabi",
+    "thumbv8m.main-none-eabihf",
+    "riscv32i-unknown-none-elf",
+    "riscv32imac-unknown-none-elf",
+    "riscv32imc-unknown-none-elf",
+    "riscv64gc-unknown-none-elf",
+    "riscv64imac-unknown-none-elf",
+]
