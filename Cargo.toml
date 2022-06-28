@@ -27,18 +27,3 @@ cortex-m-semihosting = "0.*"
 [target.'cfg(all(any(target_arch = "riscv32", target_arch = "riscv64"), target_os = "none"))'.dependencies]
 riscv = "0.7.0"
 riscv-rt = "0.8.0"
-
-[profile.release]
-codegen-units = 1 # Better optimizations
-debug = false # Symbols don't increase size if enabled
-lto = true # Link time optimizations
-opt-level = "z" # Optimize for size
-
-[patch.crates-io]
-panic-abort = { git = "https://github.com/japaric/panic-abort.git", branch = "master" }
-panic-halt = { git = "https://github.com/korken89/panic-halt.git", branch = "master" }
-cortex-m = { git = "https://github.com/rust-embedded/cortex-m.git", branch = "master" }
-cortex-m-rt = { git = "https://github.com/rust-embedded/cortex-m-rt.git", branch = "master" }
-cortex-m-semihosting = { git = "https://github.com/rust-embedded/cortex-m.git", branch = "master" }
-riscv = { git = "https://github.com/rust-embedded/riscv.git", branch = "master" }
-riscv-rt = { git = "https://github.com/rust-embedded/riscv-rt.git", branch = "master" }
