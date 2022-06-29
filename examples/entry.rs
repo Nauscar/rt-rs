@@ -1,9 +1,9 @@
 #![no_std]
 #![no_main]
 
-use rt::entry;
+use rt as _;
 
-#[entry]
-fn main() -> ! {
+#[no_mangle]
+fn main() {
     loop {}
 }

@@ -3,8 +3,7 @@
 
 use rt::*;
 
-#[entry]
-fn main() -> ! {
+#[no_mangle]
+fn main() {
     println!("Hello, world!");
-    loop {}
 }
