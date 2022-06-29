@@ -11,6 +11,8 @@
 #target = "riscv32imc-unknown-none-elf"
 #target = "riscv64gc-unknown-none-elf"
 #target = "riscv64imac-unknown-none-elf"
+#target = "x86-unknown-none-elf.json" # FIXME
+#target = "x86_64-unknown-none-elf.json" # FIXME
 
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
 rustflags = [
@@ -57,3 +59,5 @@ runner = "qemu-system-riscv64 -machine virt -cpu rv64 -smp 1 -m 32K -serial stdi
 
 [target.riscv64imac-unknown-none-elf]
 runner = "qemu-system-riscv64 -machine virt -cpu rv64 -smp 1 -m 32K -serial stdio -bios none -display none -kernel"
+
+# TODO: qemu runners for targets x86, x86_64 
