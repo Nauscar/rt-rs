@@ -18,7 +18,6 @@ lazy_static! {
 #[cfg(all(any(target_arch = "riscv32", target_arch = "riscv64"), target_os = "none"))]
 lazy_static! {
 	pub static ref WRITER: Mutex<Stdio> = Mutex::new(
-		#[cfg(all(target_arch = "arm", target_os = "none"))]
 		Stdio::new(0x1000_0000)
 	);
 }
