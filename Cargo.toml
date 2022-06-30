@@ -23,17 +23,20 @@ halt = ["panic-halt"]
 
 [dependencies]
 entry = { path = "entry" }
-panic-abort = { version = "0.3", optional = true } # Requires nightly
-panic-halt = { version = "0.2", optional = true }
+lazy_static = { version = "1.*", features = ["spin_no_std"] }
+panic-abort = { version = "0.3.*", optional = true } # Requires nightly
+panic-halt = { version = "0.2.*", optional = true }
+spin = "0.9.*"
 
 [target.'cfg(all(target_arch = "arm", target_os = "none"))'.dependencies]
-cortex-m = "0.7"
-cortex-m-rt = "0.7"
+cortex-m = "0.7.*"
+cortex-m-rt = "0.7.*"
 cortex-m-semihosting = "0.*"
 
 [target.'cfg(all(any(target_arch = "riscv32", target_arch = "riscv64"), target_os = "none"))'.dependencies]
-riscv = "0.8"
-riscv-rt = "0.8"
+riscv = "0.8.*"
+riscv-rt = "0.8.*"
 
 [target.'cfg(all(any(target_arch = "x86", target_arch = "x86_64"), target_os = "none"))'.dependencies]
-bootloader = "0.10"
+bootloader = "0.10.*"
+uart_16550 = { version = "0.2.15", default-features = false }
