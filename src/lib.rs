@@ -3,6 +3,7 @@ mod arch;
 mod panic;
 mod print;
 mod entry;
+mod rt;
 
 #[cfg(not(target_os = "none"))]
 compile_error!("Select a build target in .cargo/config, or try cargo build --target <target_arch>");

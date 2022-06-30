@@ -1,5 +1,5 @@
 [toolchain]
-channel = "stable"
+channel = "nightly"
 targets = [
     "thumbv6m-none-eabi",
     "thumbv7em-none-eabi",
@@ -13,4 +13,5 @@ targets = [
     "riscv32imc-unknown-none-elf",
     "riscv64gc-unknown-none-elf",
     "riscv64imac-unknown-none-elf",
+    "x86_64-unknown-none"
 ]

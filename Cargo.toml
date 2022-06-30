@@ -7,6 +7,12 @@ license = "MIT"
 license-file = "LICENSE.txt"
 build = "build.rs"
 
+[workspace]
+members = [
+    "boot",
+    "entry"
+]
+
 [lib]
 name = "rt"
 
@@ -16,6 +22,7 @@ abort = ["panic-abort"]
 halt = ["panic-halt"]
 
 [dependencies]
+entry = { path = "entry" }
 panic-abort = { version = "0.3", optional = true } # Requires nightly
 panic-halt = { version = "0.2", optional = true }
 
