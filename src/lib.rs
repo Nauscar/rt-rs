@@ -1,4 +1,7 @@
+#![feature(alloc_error_handler)]
 #![no_std]
+
+mod alloc;
 mod arch;
 mod panic;
 pub mod print;
